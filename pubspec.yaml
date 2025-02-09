@@ -60,6 +60,7 @@ flutter:
   uses-material-design: true
 
   assets:
+      - assets/sun.glb
       - assets/earth.glb
       - assets/jupiter.glb
       - assets/mars.glb

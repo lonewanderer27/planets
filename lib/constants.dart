@@ -1,8 +1,31 @@
 enum Planets {
-  mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto
+  sun,
+  mercury,
+  venus,
+  earth,
+  mars,
+  jupiter,
+  saturn,
+  uranus,
+  neptune,
+  pluto
 }
 
+final List<String> planetModels = [
+  'assets/sun.glb',
+  'assets/mercury.glb',
+  'assets/venus.glb',
+  'assets/earth.glb',
+  'assets/mars.glb',
+  'assets/jupiter.glb',
+  'assets/saturn.glb',
+  'assets/uranus.glb',
+  'assets/neptune.glb',
+  'assets/pluto.glb'
+];
+
 List<String> planetDescriptions = [
+  "The star at the center of the Solar System, providing heat and light to all planets.",
   "The smallest planet and closest to the Sun, with extreme temperature variations.",
   "A hot, toxic world with a thick atmosphere and the brightest planet in our sky.",
   "The only planet known to support life, with abundant water and a protective atmosphere.",

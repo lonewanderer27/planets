@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_controller/flutter_3d_controller.dart';
-import 'package:planets/constants.dart';
+import 'package:planets/constants.dart' as constants;
 
 void main() {
   runApp(const PlanetsApp());
@@ -17,18 +17,6 @@ class _PlanetsAppState extends State<PlanetsApp> {
   int _currentPlanet = 0;
   Flutter3DController controller = Flutter3DController();
 
-  final List<String> planetModels = [
-    'assets/mercury.glb',
-    'assets/venus.glb',
-    'assets/earth.glb',
-    'assets/mars.glb',
-    'assets/jupiter.glb',
-    'assets/saturn.glb',
-    'assets/uranus.glb',
-    'assets/neptune.glb',
-    'assets/pluto.glb'
-  ];
-
   // Cache for preloading
   Map<int, Flutter3DController> modelCache = {};
 
@@ -44,13 +32,13 @@ class _PlanetsAppState extends State<PlanetsApp> {
     if (_currentPlanet > 0) {
       modelCache[_currentPlanet - 1] = Flutter3DController();
     }
-    if (_currentPlanet < planetModels.length - 1) {
+    if (_currentPlanet < constants.planetModels.length - 1) {
       modelCache[_currentPlanet + 1] = Flutter3DController();
     }
   }
 
   void _nextPlanet() {
-    if (_currentPlanet == planetModels.length - 1) return;
+    if (_currentPlanet == constants.planetModels.length - 1) return;
     setState(() {
       _currentPlanet++;
       _preloadModels();
@@ -103,7 +91,7 @@ class _PlanetsAppState extends State<PlanetsApp> {
                           width: 300,
                           child: Flutter3DViewer(
                             controller: modelCache[_currentPlanet]!,
-                            src: planetModels[_currentPlanet],
+                            src: constants.planetModels[_currentPlanet],
                             onProgress: (double progressValue) {
                               debugPrint('Loading progress: $progressValue');
                             },
@@ -115,7 +103,7 @@ class _PlanetsAppState extends State<PlanetsApp> {
                       ),
                       Opacity(
                         opacity:
-                            _currentPlanet == Planets.values.length-1 ? 0 : 1,
+                            _currentPlanet == constants.Planets.values.length-1 ? 0 : 1,
                         child: IconButton(
                           onPressed: _nextPlanet,
                           icon: const Icon(Icons.chevron_right),
@@ -136,14 +124,14 @@ class _PlanetsAppState extends State<PlanetsApp> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          Planets.values[_currentPlanet].name.toUpperCase(),
+                          constants.Planets.values[_currentPlanet].name.toUpperCase(),
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Text(planetDescriptions[_currentPlanet]),
+                        Text(constants.planetDescriptions[_currentPlanet]),
                       ],
                     ),
                   ),
