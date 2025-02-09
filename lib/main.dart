@@ -89,10 +89,13 @@ class _PlanetsAppState extends State<PlanetsApp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        onPressed: _prevPlanet,
-                        icon: const Icon(Icons.chevron_left),
-                        iconSize: 32,
+                      Opacity(
+                        opacity: _currentPlanet == 0 ? 0 : 1,
+                        child: IconButton(
+                          onPressed: _prevPlanet,
+                          icon: const Icon(Icons.chevron_left),
+                          iconSize: 32,
+                        ),
                       ),
                       Expanded(
                         child: SizedBox(
@@ -110,11 +113,15 @@ class _PlanetsAppState extends State<PlanetsApp> {
                           ),
                         ),
                       ),
-                      IconButton(
-                        onPressed: _nextPlanet,
-                        icon: const Icon(Icons.chevron_right),
-                        iconSize: 32,
-                      ),
+                      Opacity(
+                        opacity:
+                            _currentPlanet == Planets.values.length-1 ? 0 : 1,
+                        child: IconButton(
+                          onPressed: _nextPlanet,
+                          icon: const Icon(Icons.chevron_right),
+                          iconSize: 32,
+                        ),
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),
