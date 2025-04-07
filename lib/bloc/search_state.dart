@@ -7,4 +7,8 @@ final class SearchInitial extends SearchState {}
 
 final class SearchLoading extends SearchState {}
 
-final class SearchLoaded extends SearchState {}
+final class SearchLoaded extends SearchState {
+  SearchLoaded(this.planets);
+
+  final List<Planets> planets;
+}
