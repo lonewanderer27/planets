@@ -6,7 +6,7 @@ part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  SearchBloc() : super(SearchInitial()) {
+  SearchBloc() : super(SearchInitial(Planets.values)) {
     on<SearchQuery>((SearchQuery event, Emitter<SearchState> emit) {
       List<Planets> searchedPlanets = [];
 
